@@ -1,0 +1,92 @@
+---
+import { useTranslations, type Language } from '../../i18n';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const stats = [
+  { value: 15, suffix: '+', label: t('stats.years') },
+  { value: 100, suffix: '+', label: t('stats.events') },
+  { value: 500, suffix: '+', label: t('stats.trainings') },
+  { value: 50, suffix: '+', label: t('stats.clients') }
+];
+---
+
+<section class="relative py-20 bg-navy-600 overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 left-0 w-96 h-96 bg-gold-500 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-gold-500 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+  </div>
+
+  <div class="container-custom relative z-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      {stats.map((stat, index) => (
+        <div class="text-center animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
+          <div class="inline-flex items-baseline">
+            <span
+              class="stat-number text-white counter"
+              data-target={stat.value}
+            >
+              0
+            </span>
+            <span class="text-gold-400 text-3xl font-bold">{stat.suffix}</span>
+          </div>
+          <p class="text-white/70 mt-2 font-medium">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initCounters() {
+    const counters = document.querySelectorAll('.counter');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const counter = entry.target as HTMLElement;
+            const target = parseInt(counter.dataset.target || '0');
+            animateCounter(counter, target);
+            observer.unobserve(counter);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    counters.forEach((counter) => observer.observe(counter));
+  }
+
+  function animateCounter(element: HTMLElement, target: number) {
+    const duration = 2000;
+    const start = 0;
+    const startTime = performance.now();
+
+    function update(currentTime: number) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const current = Math.floor(start + (target - start) * easeOutQuart);
+
+      element.textContent = current.toString();
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  initCounters();
+  document.addEventListener('astro:after-swap', initCounters);
+</script>

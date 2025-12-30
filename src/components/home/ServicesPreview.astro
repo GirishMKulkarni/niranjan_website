@@ -1,0 +1,85 @@
+---
+import { useTranslations, getLocalizedPath, type Language } from '../../i18n';
+import { services } from '../../data/services';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Show first 6 services
+const previewServices = services.slice(0, 6);
+---
+
+<section id="services" class="section-padding bg-gray-50">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16 animate-on-scroll">
+      <span class="text-gold-500 font-semibold text-sm tracking-wider uppercase mb-2 block">
+        What I Offer
+      </span>
+      <h2 class="text-navy-600 mb-4">{t('services.title')}</h2>
+      <p class="text-gray-600 text-lg">{t('services.subtitle')}</p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+      {previewServices.map((service) => (
+        <div class="group bg-white rounded-2xl p-8 card-lift gold-border shadow-lg hover:shadow-xl">
+          <!-- Icon -->
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-100 to-gold-200 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+            {service.icon}
+          </div>
+
+          <!-- Title -->
+          <h3 class="text-navy-600 text-xl font-semibold mb-3 group-hover:text-gold-600 transition-colors">
+            {t(service.titleKey)}
+          </h3>
+
+          <!-- Description -->
+          <p class="text-gray-600 mb-4 line-clamp-2">
+            {service.descriptionKey}
+          </p>
+
+          <!-- Features -->
+          <ul class="space-y-2 mb-6">
+            {service.features.slice(0, 3).map((feature) => (
+              <li class="flex items-center gap-2 text-sm text-gray-500">
+                <svg class="w-4 h-4 text-gold-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          <!-- Link -->
+          <a
+            href={getLocalizedPath(`/services#${service.id}`, lang)}
+            class="inline-flex items-center gap-2 text-gold-500 font-medium hover:text-gold-600 transition-colors"
+          >
+            {t('services.learn_more')}
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- View All Button -->
+    <div class="text-center mt-12 animate-on-scroll">
+      <a
+        href={getLocalizedPath('/services', lang)}
+        class="btn-gold inline-flex items-center gap-2"
+      >
+        View All Services
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

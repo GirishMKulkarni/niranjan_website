@@ -1,0 +1,144 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+import '../styles/global.css';
+import { getLangFromUrl, useTranslations, languages, type Language } from '../i18n';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  lang?: Language;
+}
+
+const url = Astro.url;
+const lang = Astro.props.lang || getLangFromUrl(url);
+const t = useTranslations(lang);
+
+const {
+  title = t('site.title'),
+  description = t('site.description'),
+  image = '/images/headshots/niranjan-speaking.jpg'
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="soft skills training India, corporate trainer Pune, event anchor Maharashtra, theatre artist, public speaking coach, personality development, POSH training, team building workshops, Niranjan Kulkarni, Parivartan" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Language alternates -->
+    {Object.keys(languages).map((l) => (
+      <link rel="alternate" hreflang={l} href={new URL(l === 'en' ? '/' : `/${l}/`, Astro.site)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:locale" content={lang === 'en' ? 'en_IN' : lang === 'hi' ? 'hi_IN' : 'mr_IN'} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.site)} />
+
+    <!-- Geo tags for Indian audience -->
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Pune, Maharashtra" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- View Transitions -->
+    <ViewTransitions />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Niranjan Satish Kulkarni",
+      "jobTitle": ["Soft Skills Trainer", "Event Anchor", "Theatre Artist", "Public Speaker"],
+      "url": Astro.site,
+      "image": new URL(image, Astro.site).toString(),
+      "telephone": ["+91-7588152709", "+91-9011031241"],
+      "email": "parivartancreations27@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN",
+        "addressRegion": "Maharashtra"
+      },
+      "knowsLanguage": ["en", "hi", "mr"],
+      "brand": {
+        "@type": "Brand",
+        "name": "Parivartan"
+      },
+      "award": [
+        "Best Debut - Da.Kru.lele Musical Theater",
+        "Best Actor - Aashiyana Karandak Ekankika",
+        "Best Actor - Suman Natya Wachan",
+        "Best Poet - Tata Motors",
+        "Best Anchor - Lubrall Industries"
+      ]
+    })} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-gray-50 text-navy-900">
+    <Header lang={lang} />
+
+    <main class="flex-1" transition:animate="fade">
+      <slot />
+    </main>
+
+    <Footer lang={lang} />
+
+    <!-- Scroll Animation Script -->
+    <script>
+      function initScrollAnimations() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        );
+
+        document.querySelectorAll('.animate-on-scroll, .stagger-children').forEach((el) => {
+          observer.observe(el);
+        });
+      }
+
+      // Run on initial load
+      initScrollAnimations();
+
+      // Run after View Transitions
+      document.addEventListener('astro:after-swap', initScrollAnimations);
+    </script>
+  </body>
+</html>

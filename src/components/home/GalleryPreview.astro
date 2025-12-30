@@ -1,0 +1,73 @@
+---
+import { useTranslations, getLocalizedPath, type Language } from '../../i18n';
+import { galleryImages } from '../../data/gallery';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Show 6 images for preview (mix of categories)
+const previewImages = [
+  galleryImages.find(img => img.category === 'training'),
+  galleryImages.find(img => img.category === 'anchoring'),
+  galleryImages.find(img => img.id === 'theatre-1'), // Hambirrao
+  galleryImages.find(img => img.category === 'awards'),
+  galleryImages.filter(img => img.category === 'theatre')[1],
+  galleryImages.filter(img => img.category === 'awards')[1]
+].filter(Boolean);
+---
+
+<section class="section-padding bg-gray-50">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-12 animate-on-scroll">
+      <span class="text-gold-500 font-semibold text-sm tracking-wider uppercase mb-2 block">
+        Glimpses
+      </span>
+      <h2 class="text-navy-600 mb-4">{t('gallery.title')}</h2>
+      <p class="text-gray-600 text-lg">{t('gallery.subtitle')}</p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 stagger-children">
+      {previewImages.map((image, index) => (
+        <div
+          class={`relative rounded-2xl overflow-hidden img-zoom group ${
+            index === 0 || index === 3 ? 'md:row-span-2' : ''
+          }`}
+        >
+          <img
+            src={image?.src}
+            alt={image?.alt}
+            class="w-full h-full object-cover aspect-square"
+            loading="lazy"
+          />
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-4 left-4 right-4">
+              <span class="inline-block px-3 py-1 bg-gold-500/90 text-white text-xs font-medium rounded-full capitalize">
+                {image?.category}
+              </span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- View All Button -->
+    <div class="text-center mt-12 animate-on-scroll">
+      <a
+        href={getLocalizedPath('/gallery', lang)}
+        class="btn-gold inline-flex items-center gap-2"
+      >
+        View Full Gallery
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

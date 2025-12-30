@@ -1,0 +1,68 @@
+---
+import { useTranslations, getLocalizedPath, type Language } from '../../i18n';
+import { awards } from '../../data/awards';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Show first 3 awards
+const highlightedAwards = awards.slice(0, 3);
+---
+
+<section class="section-padding bg-white">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-12 animate-on-scroll">
+      <span class="text-gold-500 font-semibold text-sm tracking-wider uppercase mb-2 block">
+        Recognition
+      </span>
+      <h2 class="text-navy-600 mb-4">{t('awards.title')}</h2>
+      <p class="text-gray-600 text-lg">{t('awards.subtitle')}</p>
+    </div>
+
+    <!-- Awards Grid -->
+    <div class="grid md:grid-cols-3 gap-8 stagger-children">
+      {highlightedAwards.map((award) => (
+        <div class="group text-center">
+          <!-- Trophy Icon -->
+          <div class="relative mx-auto w-24 h-24 mb-6">
+            <div class="absolute inset-0 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full opacity-20 group-hover:scale-110 transition-transform"></div>
+            <div class="relative w-full h-full rounded-full bg-gradient-to-br from-gold-100 to-gold-200 flex items-center justify-center">
+              <svg class="w-10 h-10 text-gold-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Award Info -->
+          <h3 class="text-navy-600 font-semibold text-lg mb-2 group-hover:text-gold-600 transition-colors">
+            {t(award.titleKey)}
+          </h3>
+          <p class="text-gray-500 text-sm mb-2">{award.organization}</p>
+          {award.year && (
+            <span class="inline-block px-3 py-1 bg-gold-100 text-gold-600 text-xs font-medium rounded-full">
+              {award.year}
+            </span>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- View All Button -->
+    <div class="text-center mt-12 animate-on-scroll">
+      <a
+        href={getLocalizedPath('/awards', lang)}
+        class="btn-outline-gold inline-flex items-center gap-2"
+      >
+        View All Awards
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

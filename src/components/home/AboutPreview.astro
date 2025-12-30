@@ -1,0 +1,78 @@
+---
+import { useTranslations, getLocalizedPath, type Language } from '../../i18n';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const highlights = [
+  { icon: '🎓', text: '15+ Years Corporate Experience' },
+  { icon: '🎭', text: '10+ Years Theatre & Anchoring' },
+  { icon: '🗣️', text: 'Trilingual: English, Hindi, Marathi' },
+  { icon: '🏭', text: 'Manufacturing & Corporate Training Expert' }
+];
+---
+
+<section id="about-preview" class="section-padding bg-white">
+  <div class="container-custom">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Image -->
+      <div class="relative animate-on-scroll">
+        <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
+          <img
+            src="/images/headshots/niranjan-speaking.jpg"
+            alt="Niranjan Kulkarni - Professional Speaker"
+            class="w-full h-auto object-cover"
+            loading="lazy"
+          />
+        </div>
+        <!-- Decorative elements -->
+        <div class="absolute -top-4 -left-4 w-24 h-24 bg-gold-500/20 rounded-full blur-2xl"></div>
+        <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-navy-500/20 rounded-full blur-2xl"></div>
+        <!-- Experience badge -->
+        <div class="absolute -bottom-6 -right-6 z-20 bg-white rounded-2xl shadow-xl p-6 glass-gold">
+          <div class="text-center">
+            <span class="stat-number text-3xl">15+</span>
+            <p class="text-navy-600 text-sm font-medium">{t('stats.years')}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="animate-on-scroll" style="animation-delay: 0.2s;">
+        <span class="text-gold-500 font-semibold text-sm tracking-wider uppercase mb-2 block">
+          {t('about.subtitle')}
+        </span>
+        <h2 class="text-navy-600 mb-6">
+          {t('about.title')}
+        </h2>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+          {t('about.intro')}
+        </p>
+
+        <!-- Highlights -->
+        <div class="grid sm:grid-cols-2 gap-4 mb-8 stagger-children">
+          {highlights.map((item) => (
+            <div class="flex items-center gap-3 p-4 rounded-xl bg-gray-50 hover:bg-gold-50 transition-colors group">
+              <span class="text-2xl group-hover:scale-110 transition-transform">{item.icon}</span>
+              <span class="text-navy-600 font-medium">{item.text}</span>
+            </div>
+          ))}
+        </div>
+
+        <a
+          href={getLocalizedPath('/about', lang)}
+          class="btn-gold inline-flex items-center gap-2"
+        >
+          {t('services.learn_more')}
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

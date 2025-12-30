@@ -1,0 +1,127 @@
+{
+  "site": {
+    "title": "Parivartan | Niranjan Kulkarni",
+    "description": "Soft Skills Trainer, Event Anchor, Theatre Artist & Public Speaker transforming lives through expression"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "gallery": "Gallery",
+    "awards": "Awards",
+    "podcast": "Podcast",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Welcome to",
+    "brand": "Parivartan",
+    "name": "Niranjan Satish Kulkarni",
+    "roles": "Trainer | Anchor | Theatre Artist | Speaker",
+    "tagline": "Transforming Lives Through Expression",
+    "cta_primary": "Book a Session",
+    "cta_secondary": "View Services"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Who I Am",
+    "intro": "I am a passionate Soft Skills Trainer, Professional Anchor, Theatre Artist, and Public Speaker, dedicated to helping people communicate with confidence and perform at their best—on stage, at work, and in life.",
+    "journey_title": "My Journey",
+    "experience_corporate": "15+ Years Corporate Experience",
+    "experience_theatre": "10+ Years Theatre & Anchoring",
+    "approach_title": "My Approach",
+    "approach_text": "I strongly believe that learning should be simple and practical, communication should be clear and confident, and every individual has untapped potential.",
+    "mission_title": "My Mission",
+    "mission_text": "To empower individuals and teams with effective communication skills, confident body language, and the mindset required to succeed in professional and personal life."
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Comprehensive Training & Performance Solutions",
+    "training_title": "Soft Skills Training",
+    "anchoring_title": "Event Anchoring",
+    "theatre_title": "Theatre-Based Learning",
+    "speaking_title": "Public Speaking",
+    "podcast_title": "Business Podcast",
+    "learn_more": "Learn More",
+    "inquire": "Inquire Now",
+    "items": {
+      "personality": "Personality Development",
+      "etiquette": "Professional Etiquette & Grooming",
+      "teamwork": "Teamwork & Collaboration",
+      "conflict": "Conflict Management",
+      "leadership": "Leadership Skills",
+      "speaking": "Public Speaking & Presentation",
+      "time": "Time Management & Goals",
+      "sqdcm": "SQDCM Techniques",
+      "marketing": "Marketing & Sales Basics",
+      "posh": "POSH Training",
+      "storytelling": "Storytelling & Motivation",
+      "anchoring": "Event Anchoring"
+    }
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Moments That Define The Journey",
+    "filter_all": "All",
+    "filter_training": "Training",
+    "filter_anchoring": "Anchoring",
+    "filter_awards": "Awards",
+    "filter_theatre": "Theatre"
+  },
+  "awards": {
+    "title": "Awards & Recognition",
+    "subtitle": "Celebrating Excellence in Performance",
+    "items": {
+      "debut": "Best Debut - Da.Kru.lele Musical Theater",
+      "actor1": "Best Actor - Aashiyana Karandak Ekankika",
+      "actor2": "Best Actor - Suman Natya Wachan",
+      "poet": "Best Poet - Tata Motors Competition",
+      "anchor": "Best Anchor - Lubrall Industries"
+    }
+  },
+  "podcast": {
+    "title": "Business Podcast",
+    "subtitle": "Stories That Inspire & Brands That Grow",
+    "description": "A powerful platform where entrepreneurs share their journey, struggles, success stories, and vision—while promoting their products and services.",
+    "cta": "Be a Guest"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Let's Create Something Amazing Together",
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "organization": "Organization",
+      "service": "Service Interest",
+      "message": "Your Message",
+      "submit": "Send Message"
+    },
+    "info": {
+      "phone_label": "Phone",
+      "email_label": "Email",
+      "social_label": "Follow Me"
+    }
+  },
+  "testimonials": {
+    "title": "What People Say",
+    "subtitle": "Trusted by Leading Organizations"
+  },
+  "stats": {
+    "years": "Years Experience",
+    "events": "Events Hosted",
+    "trainings": "Training Sessions",
+    "clients": "Happy Clients"
+  },
+  "footer": {
+    "tagline": "Transforming Lives Through Expression",
+    "quick_links": "Quick Links",
+    "services": "Services",
+    "contact": "Contact Us",
+    "copyright": "All rights reserved."
+  },
+  "cta": {
+    "title": "Ready to Transform?",
+    "subtitle": "Let's work together to unlock your potential",
+    "button": "Get Started"
+  }
+}

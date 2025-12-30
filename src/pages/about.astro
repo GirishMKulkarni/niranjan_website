@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n';
+import { contactInfo } from '../data/contact';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const journey = [
+  {
+    year: '2008',
+    title: 'Journey Begins',
+    description: 'Started career in Publishing industry, discovering passion for communication and expression.'
+  },
+  {
+    year: '2012',
+    title: 'Theatre Debut',
+    description: 'Entered the world of Marathi theatre, combining professional work with artistic passion.'
+  },
+  {
+    year: '2015',
+    title: 'First Award',
+    description: 'Won Best Debut at Da.Kru.lele Musical Theater, marking recognition in theatre arts.'
+  },
+  {
+    year: '2017',
+    title: 'Corporate Training',
+    description: 'Transitioned to Manufacturing sector, began conducting soft skills training programs.'
+  },
+  {
+    year: '2020',
+    title: 'Parivartan Founded',
+    description: 'Launched Parivartan - combining theatre, training, and anchoring under one brand.'
+  },
+  {
+    year: '2023',
+    title: 'Business Podcast',
+    description: 'Started business podcast to help entrepreneurs share their stories and grow their brands.'
+  }
+];
+
+const skills = [
+  { category: 'Corporate', items: ['Soft Skills Training', 'Leadership Development', 'POSH Training', 'SQDCM Techniques'] },
+  { category: 'Performance', items: ['Stage Acting', 'Voice Modulation', 'Event Anchoring', 'Public Speaking'] },
+  { category: 'Languages', items: ['English (Fluent)', 'Hindi (Native)', 'Marathi (Native)'] }
+];
+---
+
+<BaseLayout
+  title={`${t('about.title')} | ${t('site.title')}`}
+  description={t('about.intro')}
+  lang={lang}
+>
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-navy-600 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500 rounded-full blur-3xl"></div>
+    </div>
+    <div class="container-custom relative z-10">
+      <div class="max-w-3xl">
+        <span class="text-gold-400 font-semibold text-sm tracking-wider uppercase mb-4 block animate-fade-up">
+          {t('about.subtitle')}
+        </span>
+        <h1 class="text-white mb-6 animate-fade-up" style="animation-delay: 0.1s;">
+          {t('about.title')}
+        </h1>
+        <p class="text-white/70 text-xl animate-fade-up" style="animation-delay: 0.2s;">
+          {t('about.intro')}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <!-- Image Column -->
+        <div class="lg:sticky lg:top-32">
+          <div class="relative animate-on-scroll">
+            <img
+              src="/images/headshots/niranjan-speaking.jpg"
+              alt="Niranjan Kulkarni"
+              class="rounded-2xl shadow-2xl w-full"
+            />
+            <!-- Experience Badge -->
+            <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 glass-gold">
+              <div class="text-center">
+                <span class="stat-number text-4xl">15+</span>
+                <p class="text-navy-600 font-medium">{t('stats.years')}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Theatre Image -->
+          <div class="mt-8 rounded-2xl overflow-hidden shadow-xl animate-on-scroll">
+            <img
+              src="/images/gallery/theatre/Hambirrao Niranjan.png"
+              alt="Niranjan as Hambirrao - Theatre Performance"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="bg-navy-600 p-4 text-center">
+              <p class="text-white font-medium">Theatre Performance - Hambirrao</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Column -->
+        <div>
+          <!-- Brand Story -->
+          <div class="mb-16 animate-on-scroll">
+            <h2 class="text-navy-600 mb-6">The Brand: <span class="text-gradient-gold">Parivartan</span></h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-4">
+              "Parivartan" means <strong>Transformation</strong> in Hindi and Marathi. This name embodies my core belief - that every individual has the potential to transform themselves through better communication, confidence, and expression.
+            </p>
+            <p class="text-gray-600 text-lg leading-relaxed">
+              My journey from corporate employee to theatre artist to professional trainer has taught me that transformation is not just possible, it's inevitable when you combine passion with purpose.
+            </p>
+          </div>
+
+          <!-- Approach -->
+          <div class="mb-16 animate-on-scroll">
+            <h2 class="text-navy-600 mb-6">{t('about.approach_title')}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-6">
+              {t('about.approach_text')}
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4">
+              {[
+                { icon: '✔', text: 'Highly Interactive Sessions' },
+                { icon: '✔', text: 'Audience-Centric Approach' },
+                { icon: '✔', text: 'Customized Content' },
+                { icon: '✔', text: 'Real Behavioral Change' }
+              ].map((item) => (
+                <div class="flex items-center gap-3 p-4 bg-gold-50 rounded-xl">
+                  <span class="text-gold-500 text-xl">{item.icon}</span>
+                  <span class="text-navy-600 font-medium">{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Mission -->
+          <div class="mb-16 p-8 bg-navy-600 rounded-2xl animate-on-scroll">
+            <h3 class="text-gold-400 font-semibold mb-4">{t('about.mission_title')}</h3>
+            <p class="text-white text-lg leading-relaxed">
+              {t('about.mission_text')}
+            </p>
+          </div>
+
+          <!-- Skills -->
+          <div class="animate-on-scroll">
+            <h2 class="text-navy-600 mb-6">Skills & Expertise</h2>
+            <div class="space-y-6">
+              {skills.map((skillGroup) => (
+                <div>
+                  <h4 class="text-gold-600 font-semibold mb-3">{skillGroup.category}</h4>
+                  <div class="flex flex-wrap gap-2">
+                    {skillGroup.items.map((skill) => (
+                      <span class="px-4 py-2 bg-gray-100 text-navy-600 rounded-full text-sm font-medium">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey Timeline -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-2xl mx-auto mb-16 animate-on-scroll">
+        <span class="text-gold-500 font-semibold text-sm tracking-wider uppercase mb-2 block">
+          The Story
+        </span>
+        <h2 class="text-navy-600">{t('about.journey_title')}</h2>
+      </div>
+
+      <!-- Timeline -->
+      <div class="relative max-w-4xl mx-auto">
+        <!-- Timeline Line -->
+        <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-400 to-navy-600 -translate-x-1/2 hidden md:block"></div>
+
+        <div class="space-y-12">
+          {journey.map((item, index) => (
+            <div class={`relative md:flex items-center gap-8 animate-on-scroll ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+              <!-- Content -->
+              <div class={`md:w-1/2 ${index % 2 === 0 ? 'md:text-right' : ''}`}>
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                  <span class="inline-block px-3 py-1 bg-gold-100 text-gold-600 rounded-full text-sm font-bold mb-3">
+                    {item.year}
+                  </span>
+                  <h3 class="text-navy-600 text-xl font-semibold mb-2">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+
+              <!-- Dot -->
+              <div class="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-gold-500 rounded-full border-4 border-white shadow hidden md:block"></div>
+
+              <!-- Spacer -->
+              <div class="md:w-1/2"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-navy-600">
+    <div class="container-custom text-center">
+      <h2 class="text-white mb-6 animate-on-scroll">Ready to Transform?</h2>
+      <p class="text-white/70 text-xl mb-8 max-w-2xl mx-auto animate-on-scroll">
+        Let's discuss how we can work together to achieve your training and event goals.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
+        <a href={`https://wa.me/${contactInfo.whatsapp}`} class="btn-gold">
+          Contact Me
+        </a>
+        <a href={getLocalizedPath('/services', lang)} class="btn-outline-gold border-white/30 text-white hover:bg-white/10">
+          View Services
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n';
+import { contactInfo } from '../data/contact';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const podcastFeatures = [
+  {
+    icon: '🎙️',
+    title: 'Entrepreneurial Storytelling',
+    points: ['The idea & inspiration', 'Challenges & turning points', 'Growth journey & lessons learned', 'Vision for the future']
+  },
+  {
+    icon: '📢',
+    title: 'Branding & Promotion',
+    points: ['Showcase products & services', 'Highlight unique value proposition', 'Build trust and credibility', 'Strengthen personal brand']
+  }
+];
+
+const targetAudience = [
+  'Entrepreneurs & Business Owners',
+  'Startup Founders',
+  'MSMEs & Family Businesses',
+  'Professionals Building Personal Brand'
+];
+---
+
+<BaseLayout
+  title={`${t('podcast.title')} | ${t('site.title')}`}
+  description={t('podcast.description')}
+  lang={lang}
+>
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-navy-600 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500 rounded-full blur-3xl"></div>
+    </div>
+    <div class="container-custom relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-gold-400 font-semibold text-sm tracking-wider uppercase mb-4 block animate-fade-up">
+            Digital Platform
+          </span>
+          <h1 class="text-white mb-6 animate-fade-up" style="animation-delay: 0.1s;">
+            {t('podcast.title')}
+          </h1>
+          <p class="text-gold-400 text-2xl font-semibold mb-4 animate-fade-up" style="animation-delay: 0.2s;">
+            {t('podcast.subtitle')}
+          </p>
+          <p class="text-white/70 text-lg mb-8 animate-fade-up" style="animation-delay: 0.3s;">
+            {t('podcast.description')}
+          </p>
+          <a
+            href={`https://wa.me/${contactInfo.whatsapp}?text=Hi%20Niranjan,%20I%20am%20interested%20in%20being%20a%20guest%20on%20your%20podcast.`}
+            class="btn-gold inline-flex items-center gap-2 animate-fade-up"
+            style="animation-delay: 0.4s;"
+          >
+            {t('podcast.cta')}
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+        <div class="animate-fade-up" style="animation-delay: 0.3s;">
+          <img
+            src="/images/hero/podcast-studio.jpg"
+            alt="Podcast Studio"
+            class="rounded-2xl shadow-2xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Offer -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center max-w-2xl mx-auto mb-16 animate-on-scroll">
+        <h2 class="text-navy-600 mb-4">What This Podcast Offers</h2>
+        <p class="text-gray-600 text-lg">A platform designed to amplify your story and grow your brand.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {podcastFeatures.map((feature, index) => (
+          <div class="bg-gray-50 rounded-2xl p-8 animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="text-4xl mb-4">{feature.icon}</div>
+            <h3 class="text-navy-600 text-xl font-semibold mb-4">{feature.title}</h3>
+            <ul class="space-y-3">
+              {feature.points.map((point) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span class="text-gray-600">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Audience -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center max-w-2xl mx-auto mb-12 animate-on-scroll">
+        <h2 class="text-navy-600 mb-4">Who Is It For?</h2>
+        <p class="text-gray-600 text-lg">Perfect platform for business leaders ready to share their journey.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        {targetAudience.map((audience, index) => (
+          <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow animate-on-scroll" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gold-100 flex items-center justify-center">
+              <svg class="w-8 h-8 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              </svg>
+            </div>
+            <p class="text-navy-600 font-medium">{audience}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Different -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1 animate-on-scroll">
+          <h2 class="text-navy-600 mb-6">Why This Podcast Is Different</h2>
+          <div class="space-y-4">
+            {[
+              'Conversational & engaging format',
+              'Authentic, unscripted storytelling',
+              'Strong host-led interaction',
+              'Focus on visibility, branding & reach',
+              'Professional presentation & promotion'
+            ].map((point) => (
+              <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl">
+                <svg class="w-6 h-6 text-gold-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-navy-600 font-medium">{point}</span>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-8 p-6 bg-navy-600 rounded-2xl">
+            <p class="text-white/90">
+              <span class="text-gold-400 font-semibold">Host Advantage:</span> My experience as a public speaker, anchor, and theatre artist ensures every conversation is <span class="text-gold-400">comfortable</span>, <span class="text-gold-400">expressive</span>, and <span class="text-gold-400">impactful</span>.
+            </p>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2 animate-on-scroll">
+          <div class="relative">
+            <img
+              src="/images/headshots/niranjan-speaking.jpg"
+              alt="Podcast Host"
+              class="rounded-2xl shadow-xl"
+            />
+            <div class="absolute -bottom-6 -left-6 bg-gold-500 text-white rounded-2xl p-6 shadow-xl">
+              <div class="text-3xl font-bold">3</div>
+              <div class="text-sm">Languages</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages -->
+  <section class="py-16 bg-gold-50">
+    <div class="container-custom text-center">
+      <h3 class="text-navy-600 text-xl font-semibold mb-6">Available in Multiple Languages</h3>
+      <div class="flex justify-center gap-8">
+        {['English', 'हिंदी (Hindi)', 'मराठी (Marathi)'].map((lang) => (
+          <span class="px-6 py-3 bg-white rounded-full text-navy-600 font-medium shadow">{lang}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-navy-600">
+    <div class="container-custom text-center">
+      <h2 class="text-white mb-6 animate-on-scroll">Ready to Share Your Story?</h2>
+      <p class="text-white/70 text-xl mb-8 max-w-2xl mx-auto animate-on-scroll">
+        Let's create a powerful episode that showcases your journey and grows your brand.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
+        <a
+          href={`https://wa.me/${contactInfo.whatsapp}?text=Hi%20Niranjan,%20I%20want%20to%20be%20a%20guest%20on%20your%20Business%20Podcast.`}
+          class="btn-gold inline-flex items-center justify-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          </svg>
+          WhatsApp to Apply
+        </a>
+        <a href={getLocalizedPath('/contact', lang)} class="btn-outline-gold border-white/30 text-white hover:bg-white/10">
+          Send Inquiry
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
