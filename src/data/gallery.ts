@@ -105,6 +105,42 @@ export const galleryImages: GalleryImage[] = [
     src: '/images/gallery/theatre/FB_IMG_1767103771017.jpg',
     alt: 'Traditional performance',
     category: 'theatre'
+  },
+  {
+    id: 'theatre-8',
+    src: '/images/gallery/theatre/20250224_111534.jpg',
+    alt: 'Theatre rehearsal',
+    category: 'theatre'
+  },
+  {
+    id: 'theatre-9',
+    src: '/images/gallery/theatre/20250224_194409 (1).jpg',
+    alt: 'Live stage performance',
+    category: 'theatre'
+  },
+  {
+    id: 'theatre-10',
+    src: '/images/gallery/theatre/FB_IMG_1741092476909.jpg',
+    alt: 'Drama performance',
+    category: 'theatre'
+  },
+  {
+    id: 'theatre-11',
+    src: '/images/gallery/theatre/IMG-20231106-WA0060.jpg',
+    alt: 'Theatre production scene',
+    category: 'theatre'
+  },
+  {
+    id: 'theatre-12',
+    src: '/images/gallery/theatre/IMG-20250703-WA0020.jpg',
+    alt: 'Cultural theatre event',
+    category: 'theatre'
+  },
+  {
+    id: 'awards-5',
+    src: '/images/gallery/awards/My Photo 2008-02-19 (1) 0004.jpg',
+    alt: 'Award recognition ceremony',
+    category: 'awards'
   }
 ];
 
