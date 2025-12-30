@@ -47,14 +47,17 @@ export function useTranslations(lang: Language) {
 }
 
 export function getLocalizedPath(path: string, lang: Language): string {
+  // Get base URL from Astro config (handles GitHub Pages subdirectory)
+  const base = import.meta.env.BASE_URL || '/';
+
   // Remove leading slash and any existing language prefix
   const cleanPath = path.replace(/^\//, '').replace(/^(en|hi|mr)\//, '');
 
   if (lang === defaultLang) {
-    return `/${cleanPath}`;
+    return `${base}${cleanPath}`;
   }
 
-  return `/${lang}/${cleanPath}`;
+  return `${base}${lang}/${cleanPath}`;
 }
 
 export function getAllLanguageAlternates(path: string): { lang: Language; href: string }[] {
