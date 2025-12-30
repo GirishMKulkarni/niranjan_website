@@ -6,6 +6,13 @@ import { contactInfo } from '../data/contact';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL;
+
+// Prepend base URL to award images
+const awardsWithBase = awards.map(award => ({
+  ...award,
+  image: award.image ? `${base}${award.image.replace(/^\//, '')}` : undefined
+}));
 ---
 
 <BaseLayout
@@ -41,7 +48,7 @@ const t = useTranslations(lang);
         <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-400 via-gold-500 to-navy-600 md:-translate-x-1/2"></div>
 
         <div class="space-y-16">
-          {awards.map((award, index) => (
+          {awardsWithBase.map((award, index) => (
             <div class={`relative flex items-start gap-8 animate-on-scroll ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
               <!-- Content Card -->
               <div class={`flex-1 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:pl-8' : 'md:pr-8 md:text-right'}`}>
@@ -104,7 +111,7 @@ const t = useTranslations(lang);
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden animate-on-scroll">
           <div class="grid md:grid-cols-2">
             <img
-              src="/images/gallery/awards/FB_IMG_1767103857721.jpg"
+              src={`${base}images/gallery/awards/FB_IMG_1767103857721.jpg`}
               alt="Marathi Rangbhumi Award"
               class="w-full h-full object-cover"
             />
@@ -116,7 +123,7 @@ const t = useTranslations(lang);
               </p>
               <div class="flex items-center gap-4">
                 <img
-                  src="/images/headshots/niranjan-speaking.jpg"
+                  src={`${base}images/headshots/niranjan-speaking.jpg`}
                   alt="Niranjan"
                   class="w-12 h-12 rounded-full object-cover"
                 />

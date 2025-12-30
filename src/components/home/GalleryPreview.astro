@@ -8,6 +8,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL;
 
 // Show 6 images for preview (mix of categories)
 const previewImages = [
@@ -17,7 +18,7 @@ const previewImages = [
   galleryImages.find(img => img.category === 'awards'),
   galleryImages.filter(img => img.category === 'theatre')[1],
   galleryImages.filter(img => img.category === 'awards')[1]
-].filter(Boolean);
+].filter(Boolean).map(img => img ? { ...img, src: `${base}${img.src.replace(/^\//, '')}` } : null);
 ---
 
 <section class="section-padding bg-gray-50">

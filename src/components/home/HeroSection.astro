@@ -8,12 +8,13 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL;
 
 // Images with their focus positions (where the subject is)
 const heroImages = [
-  { src: '/images/headshots/niranjan-speaking.jpg', position: 'object-[center_20%]' },
-  { src: '/images/hero/podcast-studio.jpg', position: 'object-center' },
-  { src: '/images/gallery/theatre/Hambirrao Niranjan.png', position: 'object-[center_15%]' }
+  { src: `${base}images/headshots/niranjan-speaking.jpg`, position: 'object-[center_20%]' },
+  { src: `${base}images/hero/podcast-studio.jpg`, position: 'object-center' },
+  { src: `${base}images/gallery/theatre/Hambirrao Niranjan.png`, position: 'object-[center_15%]' }
 ];
 ---
 
