@@ -11,7 +11,8 @@ const base = import.meta.env.BASE_URL;
 // Prepend base URL to award images
 const awardsWithBase = awards.map(award => ({
   ...award,
-  image: award.image ? `${base}${award.image.replace(/^\//, '')}` : undefined
+  image: award.image ? `${base}${award.image.replace(/^\//, '')}` : undefined,
+  imagePosition: award.imagePosition || 'center'
 }));
 ---
 
@@ -59,7 +60,8 @@ const awardsWithBase = awards.map(award => ({
                       <img
                         src={award.image}
                         alt={t(award.titleKey)}
-                        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                        class="w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        style={`object-position: ${award.imagePosition}; height: ${award.imageHeight ? award.imageHeight + 'rem' : '12rem'}`}
                       />
                     </div>
                   )}

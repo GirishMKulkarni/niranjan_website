@@ -3,6 +3,7 @@ export interface GalleryImage {
   src: string;
   alt: string;
   category: 'training' | 'anchoring' | 'awards' | 'theatre';
+  objectPosition?: string;
 }
 
 export const galleryImages: GalleryImage[] = [
