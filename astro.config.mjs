@@ -6,8 +6,8 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://niranjankulkarni.github.io',
-  base: '/niranjan_website/',
+  site: 'https://niranjanskulkarni.com',
+  // base: '/niranjan_website/',  // Not needed with custom domain
   vite: {
     plugins: [tailwindcss()]
   },
