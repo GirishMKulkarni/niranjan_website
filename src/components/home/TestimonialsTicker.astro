@@ -1,6 +1,5 @@
 ---
 import { useTranslations, type Language } from '../../i18n';
-import { testimonials } from '../../data/testimonials';
 
 interface Props {
   lang: Language;
@@ -8,50 +7,51 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL;
 
-// Duplicate testimonials for infinite scroll effect
-const duplicatedTestimonials = [...testimonials, ...testimonials];
+const screenshotTestimonials = [
+  { src: 'diveagar.jpeg', alt: 'Client Testimonial - Diveagar' },
+  { src: 'expandx.jpeg', alt: 'Client Testimonial - ExpandX' },
+  { src: 'kakde.jpeg', alt: 'Client Testimonial - Kakde' },
+  { src: 'lurall.jpeg', alt: 'Client Testimonial - Lurall' },
+];
 ---
 
-<section class="section-padding bg-white overflow-hidden">
-  <div class="container-custom mb-12">
-    <div class="text-center max-w-2xl mx-auto animate-on-scroll">
+<section class="section-padding bg-white">
+  <div class="container-custom">
+    <div class="text-center max-w-2xl mx-auto mb-12 animate-on-scroll">
       <span class="text-gold-500 font-semibold text-sm tracking-wider uppercase mb-2 block">
         Testimonials
       </span>
       <h2 class="text-navy-600 mb-4">{t('testimonials.title')}</h2>
       <p class="text-gray-600 text-lg">{t('testimonials.subtitle')}</p>
     </div>
-  </div>
 
-  <!-- Testimonials Ticker -->
-  <div class="relative">
-    <!-- Gradient Masks -->
-    <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-    <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+    <!-- Video Testimonial -->
+    <div class="max-w-2xl mx-auto mb-12 animate-on-scroll">
+      <div class="rounded-2xl overflow-hidden shadow-xl">
+        <video
+          controls
+          class="w-full"
+          poster={`${base}images/testimonials/expandx.jpeg`}
+        >
+          <source src={`${base}images/testimonials/video.mp4`} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
 
-    <div class="ticker-track">
-      {duplicatedTestimonials.map((testimonial, index) => (
-        <div class="flex-shrink-0 w-[400px] mx-4">
-          <div class="bg-gray-50 rounded-2xl p-6 h-full border border-gray-100 hover:border-gold-200 transition-colors">
-            <!-- Quote Icon -->
-            <div class="text-gold-400 text-4xl mb-4 opacity-50">"</div>
-
-            <!-- Content -->
-            <p class="text-gray-600 mb-6 line-clamp-4 leading-relaxed">
-              {testimonial.content}
-            </p>
-
-            <!-- Author -->
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-white font-bold">
-                {testimonial.name.charAt(0)}
-              </div>
-              <div>
-                <h4 class="text-navy-600 font-semibold">{testimonial.name}</h4>
-                <p class="text-gray-500 text-sm">{testimonial.role}, {testimonial.company}</p>
-              </div>
-            </div>
+    <!-- Screenshot Testimonials Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      {screenshotTestimonials.map((testimonial) => (
+        <div class="animate-on-scroll">
+          <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-gray-100 hover:border-gold-200">
+            <img
+              src={`${base}images/testimonials/${testimonial.src}`}
+              alt={testimonial.alt}
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       ))}

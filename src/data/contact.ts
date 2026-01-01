@@ -3,10 +3,10 @@ export const contactInfo = {
   email: 'parivartancreations27@gmail.com',
   whatsapp: '917588152709',
   social: {
-    facebook: 'https://facebook.com',
-    linkedin: 'https://linkedin.com',
-    instagram: 'https://instagram.com',
-    youtube: 'https://youtube.com'
+    facebook: 'https://www.facebook.com/share/1DY4X919wa/',
+    linkedin: 'https://www.linkedin.com/in/niranjan-kulkarni-anchoring-trainer-for-oratory-skills-0390aa1b5',
+    instagram: 'https://www.instagram.com/niranjan.myself',
+    youtube: 'https://www.youtube.com/@niranjankulkarni3605'
   }
 };
 
