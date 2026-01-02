@@ -35,103 +35,10 @@ const t = useTranslations(lang);
   <!-- Contact Section -->
   <section class="section-padding bg-white">
     <div class="container-custom">
-      <div class="grid lg:grid-cols-2 gap-12">
-        <!-- Contact Form -->
-        <div class="animate-on-scroll">
-          <h2 class="text-navy-600 mb-8">Send a Message</h2>
-          <form
-            action="https://formspree.io/f/placeholder"
-            method="POST"
-            class="space-y-6"
-            id="contact-form"
-          >
-            <div class="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label for="name" class="block text-navy-600 font-medium mb-2">{t('contact.form.name')}</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  class="form-input"
-                  placeholder="John Doe"
-                />
-              </div>
-              <div>
-                <label for="organization" class="block text-navy-600 font-medium mb-2">{t('contact.form.organization')}</label>
-                <input
-                  type="text"
-                  id="organization"
-                  name="organization"
-                  class="form-input"
-                  placeholder="Company Name"
-                />
-              </div>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label for="email" class="block text-navy-600 font-medium mb-2">{t('contact.form.email')}</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  class="form-input"
-                  placeholder="you@example.com"
-                />
-              </div>
-              <div>
-                <label for="phone" class="block text-navy-600 font-medium mb-2">{t('contact.form.phone')}</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  class="form-input"
-                  placeholder="+91 9876543210"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label for="service" class="block text-navy-600 font-medium mb-2">{t('contact.form.service')}</label>
-              <select id="service" name="service" class="form-input">
-                <option value="">Select a service...</option>
-                {serviceOptions.map((option) => (
-                  <option value={option.value}>{option.label}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label for="message" class="block text-navy-600 font-medium mb-2">{t('contact.form.message')}</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                required
-                class="form-input resize-none"
-                placeholder="Tell me about your requirements..."
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn-gold w-full sm:w-auto flex items-center justify-center gap-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-              </svg>
-              {t('contact.form.submit')}
-            </button>
-          </form>
-
-          <!-- Success Message -->
-          <div id="form-success" class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-xl">
-            Thank you! Your message has been sent successfully. I'll get back to you soon.
-          </div>
-        </div>
-
+      <div class="max-w-2xl mx-auto">
         <!-- Contact Info -->
-        <div class="lg:pl-8 animate-on-scroll" style="animation-delay: 0.2s;">
-          <h2 class="text-navy-600 mb-8">Contact Information</h2>
+        <div class="animate-on-scroll">
+          <h2 class="text-navy-600 mb-8 text-center">Contact Information</h2>
 
           <div class="space-y-6 mb-12">
             <!-- Phone -->
@@ -264,41 +171,3 @@ const t = useTranslations(lang);
     </div>
   </section>
 </BaseLayout>
-
-<script>
-  function initContactForm() {
-    const form = document.getElementById('contact-form');
-    const successMessage = document.getElementById('form-success');
-
-    form?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(form as HTMLFormElement);
-
-      try {
-        const response = await fetch((form as HTMLFormElement).action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if (response.ok) {
-          successMessage?.classList.remove('hidden');
-          (form as HTMLFormElement).reset();
-
-          // Hide success message after 5 seconds
-          setTimeout(() => {
-            successMessage?.classList.add('hidden');
-          }, 5000);
-        }
-      } catch (error) {
-        console.error('Form submission error:', error);
-      }
-    });
-  }
-
-  initContactForm();
-  document.addEventListener('astro:after-swap', initContactForm);
-</script>
