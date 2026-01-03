@@ -1,0 +1,206 @@
+---
+import type { Language } from '../../i18n';
+
+interface Props {
+  type: 'home' | 'about' | 'services' | 'gallery' | 'awards' | 'podcast' | 'contact';
+  lang: Language;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const { type, lang, breadcrumbs = [] } = Astro.props;
+const siteUrl = 'https://niranjanskulkarni.com';
+
+// Organization Schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Parivartan",
+  "alternateName": "Parivartan Creations",
+  "url": siteUrl,
+  "logo": `${siteUrl}/images/logo.png`,
+  "description": "Soft Skills Training, Event Anchoring, Theatre-Based Learning, and Public Speaking services",
+  "founder": {
+    "@type": "Person",
+    "name": "Niranjan Satish Kulkarni"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN",
+    "addressRegion": "Maharashtra",
+    "addressLocality": "Pune"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-7588152709",
+    "contactType": "customer service",
+    "availableLanguage": ["English", "Hindi", "Marathi"]
+  },
+  "sameAs": [
+    "https://www.facebook.com/parivartancreations27",
+    "https://www.instagram.com/niranjan_parivartan",
+    "https://www.linkedin.com/in/niranjan-kulkarni-parivartan",
+    "https://www.youtube.com/@NiranjanKulkarniParivartan"
+  ]
+};
+
+// LocalBusiness Schema for services
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Parivartan - Soft Skills Training",
+  "image": `${siteUrl}/images/headshots/niranjan-speaking.jpg`,
+  "url": siteUrl,
+  "telephone": "+91-7588152709",
+  "email": "parivartancreations27@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN",
+    "addressRegion": "Maharashtra",
+    "addressLocality": "Pune"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 18.5204,
+    "longitude": 73.8567
+  },
+  "priceRange": "$$",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "India"
+  },
+  "serviceType": [
+    "Soft Skills Training",
+    "Event Anchoring",
+    "Corporate Training",
+    "Public Speaking Coaching",
+    "Theatre-Based Learning",
+    "POSH Training"
+  ]
+};
+
+// Services Schema
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Training & Performance Services",
+  "itemListElement": [
+    {
+      "@type": "Service",
+      "position": 1,
+      "name": "Personality Development Training",
+      "description": "Unlock your true potential with confidence-building techniques and personal branding strategies.",
+      "provider": { "@type": "Organization", "name": "Parivartan" },
+      "areaServed": "India"
+    },
+    {
+      "@type": "Service",
+      "position": 2,
+      "name": "Event Anchoring",
+      "description": "Professional event hosting for corporate, cultural, musical, and social events.",
+      "provider": { "@type": "Organization", "name": "Parivartan" },
+      "areaServed": "India"
+    },
+    {
+      "@type": "Service",
+      "position": 3,
+      "name": "Corporate Training",
+      "description": "Comprehensive soft skills training programs for organizations.",
+      "provider": { "@type": "Organization", "name": "Parivartan" },
+      "areaServed": "India"
+    },
+    {
+      "@type": "Service",
+      "position": 4,
+      "name": "Public Speaking Coaching",
+      "description": "Master the art of public speaking with voice modulation and stage presence techniques.",
+      "provider": { "@type": "Organization", "name": "Parivartan" },
+      "areaServed": "India"
+    },
+    {
+      "@type": "Service",
+      "position": 5,
+      "name": "POSH Training",
+      "description": "Comprehensive Prevention of Sexual Harassment awareness and compliance training.",
+      "provider": { "@type": "Organization", "name": "Parivartan" },
+      "areaServed": "India"
+    }
+  ]
+};
+
+// Breadcrumb Schema
+const breadcrumbSchema = breadcrumbs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbs.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "item": item.url
+  }))
+} : null;
+
+// FAQ Schema for services page
+const faqSchema = type === 'services' ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What types of training programs do you offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer Personality Development, Professional Etiquette, Leadership Skills, Public Speaking, Time Management, POSH Training, Teamwork & Collaboration, Conflict Management, and more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What languages are the training sessions conducted in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Training sessions are available in English, Hindi, and Marathi to cater to diverse audiences across India."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide corporate training for organizations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we offer customized 12-month comprehensive training programs tailored for corporates, manufacturing units, and institutions."
+      }
+    }
+  ]
+} : null;
+
+// Podcast Schema
+const podcastSchema = type === 'podcast' ? {
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  "name": "Parivartan Business Podcast",
+  "description": "A platform where entrepreneurs share their journey, struggles, success stories, and vision while promoting their products and services.",
+  "webFeed": siteUrl + "/podcast",
+  "author": {
+    "@type": "Person",
+    "name": "Niranjan Satish Kulkarni"
+  },
+  "inLanguage": ["en", "hi", "mr"]
+} : null;
+
+// Determine which schemas to include based on page type
+const schemas = [
+  organizationSchema,
+  ...(type === 'home' || type === 'services' || type === 'contact' ? [localBusinessSchema] : []),
+  ...(type === 'services' ? [servicesSchema, faqSchema] : []),
+  ...(type === 'podcast' ? [podcastSchema] : []),
+  ...(breadcrumbSchema ? [breadcrumbSchema] : [])
+].filter(Boolean);
+---
+
+{schemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

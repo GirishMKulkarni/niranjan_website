@@ -1,9 +1,16 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { getLangFromUrl, useTranslations } from '../i18n';
-import { contactInfo, serviceOptions } from '../data/contact';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations, type Language } from '../../i18n';
+import { contactInfo, serviceOptions } from '../../data/contact';
 
-const lang = getLangFromUrl(Astro.url);
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'hi' } },
+    { params: { lang: 'mr' } }
+  ];
+}
+
+const { lang } = Astro.params as { lang: Language };
 const t = useTranslations(lang);
 ---
 

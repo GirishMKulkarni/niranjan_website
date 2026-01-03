@@ -12,6 +12,9 @@
     "podcast": "Podcast",
     "contact": "Contact"
   },
+  "common": {
+    "select_language": "Select Language"
+  },
   "hero": {
     "greeting": "Welcome to",
     "brand": "Parivartan",
@@ -31,11 +34,66 @@
     "approach_title": "My Approach",
     "approach_text": "I strongly believe that learning should be simple and practical, communication should be clear and confident, and every individual has untapped potential.",
     "mission_title": "My Mission",
-    "mission_text": "To empower individuals and teams with effective communication skills, confident body language, and the mindset required to succeed in professional and personal life."
+    "mission_text": "To empower individuals and teams with effective communication skills, confident body language, and the mindset required to succeed in professional and personal life.",
+    "story_label": "The Story",
+    "brand_title": "The Brand: Parivartan",
+    "brand_story1": "\"Parivartan\" means Transformation in Hindi and Marathi. This name embodies my core belief - that every individual has the potential to transform themselves through better communication, confidence, and expression.",
+    "brand_story2": "My journey from corporate employee to theatre artist to professional trainer has taught me that transformation is not just possible, it's inevitable when you combine passion with purpose.",
+    "skills_title": "Skills & Expertise",
+    "theatre_performance": "Theatre Performance",
+    "theatre_caption": "Theatre Performance - Hambirrao",
+    "approach": {
+      "item1": "Highly Interactive Sessions",
+      "item2": "Audience-Centric Approach",
+      "item3": "Customized Content",
+      "item4": "Real Behavioral Change"
+    },
+    "skills": {
+      "corporate": "Corporate",
+      "corporate_items": "Soft Skills Training, Leadership Development, POSH Training, SQDCM Techniques",
+      "performance": "Performance",
+      "performance_items": "Stage Acting, Voice Modulation, Event Anchoring, Public Speaking",
+      "languages": "Languages",
+      "languages_items": "English (Fluent), Hindi (Native), Marathi (Native)"
+    },
+    "journey": {
+      "2008": {
+        "title": "Journey Begins",
+        "description": "Started career in Publishing industry, discovering passion for communication and expression."
+      },
+      "2012": {
+        "title": "Theatre Debut",
+        "description": "Entered the world of Marathi theatre, combining professional work with artistic passion."
+      },
+      "2015": {
+        "title": "Commercial Theater & Anchoring",
+        "description": "Started working commercially as a Theater Artist and Anchor, turning passion into profession."
+      },
+      "2017": {
+        "title": "Corporate Training",
+        "description": "Transitioned to Manufacturing sector, began conducting soft skills training programs."
+      },
+      "2020": {
+        "title": "Parivartan Founded",
+        "description": "Founded Parivartan with a short film and podcast, combining theatre, training, and anchoring under one brand."
+      },
+      "2023": {
+        "title": "Business Podcast",
+        "description": "Started business podcast to help entrepreneurs share their stories and grow their brands."
+      },
+      "2024": {
+        "title": "Corporate Training & Public Speaking",
+        "description": "Expanded into corporate training and started working as a professional Public Speaker."
+      }
+    },
+    "cta_text": "Let's discuss how we can work together to achieve your training and event goals.",
+    "cta_contact": "Contact Me",
+    "cta_services": "View Services"
   },
   "services": {
     "title": "Services",
     "subtitle": "Comprehensive Training & Performance Solutions",
+    "hero_subtitle": "What I Offer",
     "training_title": "Soft Skills Training",
     "anchoring_title": "Event Anchoring",
     "theatre_title": "Theatre-Based Learning",
@@ -43,6 +101,24 @@
     "podcast_title": "Business Podcast",
     "learn_more": "Learn More",
     "inquire": "Inquire Now",
+    "view_all": "View All Services",
+    "catalog_title": "Complete Service Catalog",
+    "catalog_desc": "12-month comprehensive training programs tailored for corporates, manufacturing, and institutions.",
+    "philosophy": {
+      "theatre": "Theatre-Based",
+      "theatre_desc": "Learning through expression and role-play",
+      "result": "Result-Oriented",
+      "result_desc": "Focus on real behavioral change",
+      "interactive": "Interactive",
+      "interactive_desc": "Engaging activities and discussions"
+    },
+    "categories": {
+      "training": "Soft Skills Training",
+      "anchoring": "Event Anchoring",
+      "theatre": "Theatre",
+      "speaking": "Public Speaking",
+      "podcast": "Podcast"
+    },
     "items": {
       "personality": "Personality Development",
       "etiquette": "Professional Etiquette & Grooming",
@@ -56,37 +132,145 @@
       "posh": "POSH Training",
       "storytelling": "Storytelling & Motivation",
       "anchoring": "Event Anchoring"
-    }
+    },
+    "descriptions": {
+      "personality": "Unlock your true potential with confidence-building techniques, self-awareness exercises, and personal branding strategies.",
+      "etiquette": "Master professional etiquette, workplace manners, and personal grooming for corporate success.",
+      "teamwork": "Build stronger teams through collaboration exercises, trust-building activities, and effective communication.",
+      "conflict": "Learn to handle workplace conflicts professionally with mediation techniques and constructive dialogue.",
+      "leadership": "Develop leadership qualities that inspire teams and drive organizational success.",
+      "speaking": "Master the art of public speaking with voice modulation, stage presence, and audience engagement techniques.",
+      "time": "Optimize productivity with goal-setting frameworks, prioritization techniques, and time management strategies.",
+      "sqdcm": "Implement SQDCM (Safety, Quality, Delivery, Cost, Morale) techniques for manufacturing excellence.",
+      "marketing": "Learn fundamental marketing and sales techniques to grow business and build customer relationships.",
+      "posh": "Comprehensive POSH (Prevention of Sexual Harassment) awareness and compliance training.",
+      "storytelling": "Harness the power of storytelling for business communication and motivational speaking.",
+      "anchoring": "Professional event hosting for corporate, cultural, musical, and social events."
+    },
+    "features": {
+      "personality": "Self-confidence building, Body language mastery, Personal branding, First impression management",
+      "etiquette": "Business etiquette, Dress code guidance, Email & phone etiquette, Meeting protocols",
+      "teamwork": "Team building activities, Collaboration techniques, Trust exercises, Group dynamics",
+      "conflict": "Conflict resolution, Mediation skills, Active listening, Win-win negotiation",
+      "leadership": "Leadership styles, Decision making, Team motivation, Strategic thinking",
+      "speaking": "Voice modulation, Stage presence, Audience engagement, Overcoming fear",
+      "time": "Goal setting (SMART), Prioritization matrix, Productivity hacks, Work-life balance",
+      "sqdcm": "Safety protocols, Quality management, Delivery optimization, Cost reduction",
+      "marketing": "Sales fundamentals, Customer relations, Pitch presentation, Negotiation skills",
+      "posh": "Legal awareness, Workplace safety, Reporting mechanisms, Case studies",
+      "storytelling": "Narrative techniques, Emotional connection, Business storytelling, Motivational talks",
+      "anchoring": "Corporate events, Musical evenings, Social gatherings, Cultural programs"
+    },
+    "anchoring_subtitle": "Professional Hosting",
+    "anchoring_desc": "With 10+ years of stage experience, I bring energy, professionalism, and perfect coordination to every event. Whether corporate, cultural, musical, or social - your event deserves an exceptional host.",
+    "anchoring_alt1": "Event anchoring",
+    "anchoring_alt2": "Corporate hosting",
+    "event_types": {
+      "corporate": "Corporate Events",
+      "musical": "Musical Evenings",
+      "social": "Social Gatherings",
+      "cultural": "Cultural Programs",
+      "awards": "Award Functions",
+      "launches": "Product Launches"
+    },
+    "book_event": "Book for Your Event",
+    "whatsapp_anchor_msg": "Hi Niranjan, I need an event anchor.",
+    "languages_title": "Training Languages",
+    "languages_desc": "All programs available in three languages for maximum reach and impact.",
+    "cta_title": "Need a Customized Training Program?",
+    "cta_text": "Let's discuss your specific requirements and create a tailored solution for your organization.",
+    "cta_discuss": "Discuss Requirements",
+    "cta_inquiry": "Send Inquiry"
   },
   "gallery": {
     "title": "Gallery",
     "subtitle": "Moments That Define The Journey",
+    "hero_subtitle": "Visual Journey",
     "filter_all": "All",
     "filter_training": "Training",
     "filter_anchoring": "Anchoring",
     "filter_awards": "Awards",
-    "filter_theatre": "Theatre"
+    "filter_theatre": "Theatre",
+    "category_training": "Training",
+    "category_anchoring": "Anchoring",
+    "category_awards": "Awards",
+    "category_theatre": "Theatre"
   },
   "awards": {
     "title": "Awards & Recognition",
     "subtitle": "Celebrating Excellence in Performance",
+    "hero_subtitle": "Recognition",
     "items": {
       "debut": "Best Debut - Da.Kru.lele Musical Theater",
       "actor1": "Best Actor - Aashiyana Karandak Ekankika",
       "actor2": "Best Actor - Suman Natya Wachan",
       "poet": "Best Poet - Tata Motors Competition",
       "anchor": "Best Anchor - Lubrall Industries"
-    }
+    },
+    "descriptions": {
+      "debut": "Recognized for outstanding first performance in musical theatre.",
+      "actor1": "Awarded for exceptional acting in one-act play competition.",
+      "actor2": "Honored for best theatrical reading performance.",
+      "poet": "Recognized for poetry excellence in corporate competition.",
+      "anchor": "Awarded for professional event hosting excellence."
+    },
+    "rangbhumi_title": "Marathi Rangbhumi Recognition",
+    "rangbhumi_desc": "Honored by the prestigious Marathi theatre community for contributions to the art form.",
+    "theatre_excellence": "Theatre Excellence",
+    "theatre_excellence_desc": "Recognized for exceptional contribution to Marathi theatre and performing arts. The award celebrates dedication to preserving and promoting the rich theatrical heritage of Maharashtra.",
+    "artist_title": "Theatre Artist & Performer",
+    "view_all": "View All Awards",
+    "cta_title": "Hire an Award-Winning Professional",
+    "cta_text": "Bring excellence and experience to your next event or training program.",
+    "cta_contact": "Contact Now",
+    "cta_services": "View Services"
   },
   "podcast": {
     "title": "Business Podcast",
     "subtitle": "Stories That Inspire & Brands That Grow",
+    "hero_subtitle": "Digital Platform",
     "description": "A powerful platform where entrepreneurs share their journey, struggles, success stories, and vision—while promoting their products and services.",
-    "cta": "Be a Guest"
+    "cta": "Be a Guest",
+    "studio_alt": "Podcast Studio",
+    "what_offers": "What This Podcast Offers",
+    "what_offers_desc": "A platform designed to amplify your story and grow your brand.",
+    "feature1_title": "Entrepreneurial Storytelling",
+    "feature1_points": "The idea & inspiration, Challenges & turning points, Growth journey & lessons learned, Vision for the future",
+    "feature2_title": "Branding & Promotion",
+    "feature2_points": "Showcase products & services, Highlight unique value proposition, Build trust and credibility, Strengthen personal brand",
+    "who_for": "Who Is It For?",
+    "who_for_desc": "Perfect platform for business leaders ready to share their journey.",
+    "audience": {
+      "entrepreneurs": "Entrepreneurs & Business Owners",
+      "startups": "Startup Founders",
+      "msme": "MSMEs & Family Businesses",
+      "professionals": "Professionals Building Personal Brand"
+    },
+    "why_different": "Why This Podcast Is Different",
+    "diff": {
+      "conversational": "Conversational & engaging format",
+      "authentic": "Authentic, unscripted storytelling",
+      "host_led": "Strong host-led interaction",
+      "visibility": "Focus on visibility, branding & reach",
+      "professional": "Professional presentation & promotion"
+    },
+    "host_advantage_label": "Host Advantage:",
+    "host_advantage_text": "My experience as a public speaker, anchor, and theatre artist ensures every conversation is comfortable, expressive, and impactful.",
+    "host_alt": "Podcast Host",
+    "languages_badge": "Languages",
+    "languages_title": "Available in Multiple Languages",
+    "whatsapp_msg": "Hi Niranjan, I am interested in being a guest on your podcast.",
+    "whatsapp_apply_msg": "Hi Niranjan, I want to be a guest on your Business Podcast.",
+    "cta_title": "Ready to Share Your Story?",
+    "cta_text": "Let's create a powerful episode that showcases your journey and grows your brand.",
+    "cta_whatsapp": "WhatsApp to Apply",
+    "cta_inquiry": "Send Inquiry"
   },
   "contact": {
     "title": "Get in Touch",
     "subtitle": "Let's Create Something Amazing Together",
+    "hero_subtitle": "Connect With Me",
+    "info_title": "Contact Information",
     "form": {
       "name": "Your Name",
       "email": "Email Address",
@@ -100,11 +284,17 @@
       "phone_label": "Phone",
       "email_label": "Email",
       "social_label": "Follow Me"
-    }
+    },
+    "whatsapp_label": "WhatsApp",
+    "chat_now": "Chat Now",
+    "quick_response_title": "Quick Response",
+    "quick_response_time": "Usually responds within 24 hours",
+    "quick_response_text": "For urgent inquiries, WhatsApp is the fastest way to reach me. I'm available for discussions regarding training programs, event anchoring, and podcast collaborations."
   },
   "testimonials": {
     "title": "What People Say",
-    "subtitle": "Trusted by Leading Organizations"
+    "subtitle": "Trusted by Leading Organizations",
+    "hero_subtitle": "Testimonials"
   },
   "stats": {
     "years": "Years Experience",

@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/common/Header.astro';
 import Footer from '../components/common/Footer.astro';
+import StructuredData from '../components/seo/StructuredData.astro';
 import '../styles/global.css';
 import { getLangFromUrl, useTranslations, languages, type Language } from '../i18n';
 
@@ -10,19 +11,41 @@ interface Props {
   description?: string;
   image?: string;
   lang?: Language;
+  pageType?: 'home' | 'about' | 'services' | 'gallery' | 'awards' | 'podcast' | 'contact';
+  noindex?: boolean;
 }
 
 const url = Astro.url;
 const lang = Astro.props.lang || getLangFromUrl(url);
 const t = useTranslations(lang);
+const siteUrl = 'https://niranjanskulkarni.com';
 
 const {
   title = t('site.title'),
   description = t('site.description'),
-  image = '/images/headshots/niranjan-speaking.jpg'
+  image = '/images/headshots/niranjan-speaking.jpg',
+  pageType = 'home',
+  noindex = false
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Generate breadcrumbs based on URL path
+const pathParts = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbs = [
+  { name: t('nav.home'), url: siteUrl + (lang === 'en' ? '/' : `/${lang}/`) }
+];
+
+if (pathParts.length > 0) {
+  const pageName = pathParts[pathParts.length - 1];
+  if (pageName !== 'hi' && pageName !== 'mr' && pageName !== '') {
+    const navKey = `nav.${pageName}` as const;
+    breadcrumbs.push({
+      name: t(navKey) || pageName.charAt(0).toUpperCase() + pageName.slice(1),
+      url: siteUrl + Astro.url.pathname
+    });
+  }
+}
 ---
 
 <!doctype html>
@@ -36,7 +59,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="keywords" content="soft skills training India, corporate trainer Pune, event anchor Maharashtra, theatre artist, public speaking coach, personality development, POSH training, team building workshops, Niranjan Kulkarni, Parivartan" />
+    <meta name="keywords" content="soft skills training India, corporate trainer Pune, event anchor Maharashtra, theatre artist, public speaking coach, personality development, POSH training, team building workshops, Niranjan Kulkarni, Parivartan, corporate training Mumbai, leadership development India, communication skills training, event hosting services" />
+    <meta name="author" content="Niranjan Satish Kulkarni" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {!noindex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
 
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL} />
@@ -77,7 +103,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- View Transitions -->
     <ViewTransitions />
 
-    <!-- Structured Data -->
+    <!-- Structured Data - Person -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
@@ -105,6 +131,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "Best Anchor - Lubrall Industries"
       ]
     })} />
+
+    <!-- Additional Structured Data -->
+    <StructuredData type={pageType} lang={lang} breadcrumbs={breadcrumbs} />
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/images/headshots/niranjan-speaking.jpg" as="image" />
   </head>
   <body class="min-h-screen flex flex-col bg-gray-50 text-navy-900">
     <Header lang={lang} />
