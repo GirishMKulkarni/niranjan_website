@@ -9,56 +9,22 @@ export default function VisitorCounter({ label = 'Visitors' }: VisitorCounterPro
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const NAMESPACE = 'niranjanskulkarni-com';
-    const KEY = 'visits';
     const STORAGE_KEY = 'visitor_counted';
+    const isNewVisitor = !sessionStorage.getItem(STORAGE_KEY);
+    const endpoint = isNewVisitor
+      ? 'https://api.counterapi.dev/v1/niranjanskulkarni-com/visits/up'
+      : 'https://api.counterapi.dev/v1/niranjanskulkarni-com/visits';
 
-    const fetchCount = async () => {
-      // Check if this visitor was already counted in this session
-      const alreadyCounted = sessionStorage.getItem(STORAGE_KEY);
-
-      try {
-
-        let endpoint: string;
-        if (alreadyCounted) {
-          // Just get the count without incrementing
-          endpoint = `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}`;
-        } else {
-          // Increment and get count for new visitors
-          endpoint = `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`;
-        }
-
-        const response = await fetch(endpoint);
-
-        if (!response.ok) {
-          throw new Error('Counter API failed');
-        }
-
-        const data = await response.json();
-
+    fetch(endpoint)
+      .then(res => res.json())
+      .then(data => {
         if (data.count !== undefined) {
           setCount(data.count);
-          // Mark this visitor as counted for this session
-          if (!alreadyCounted) {
-            sessionStorage.setItem(STORAGE_KEY, 'true');
-          }
+          if (isNewVisitor) sessionStorage.setItem(STORAGE_KEY, 'true');
         }
-      } catch (error) {
-        console.error('Failed to fetch visitor count:', error);
-        // Fallback: use localStorage-based counter for development/CORS issues
-        const localCount = parseInt(localStorage.getItem('local_visitor_count') || '0', 10);
-        const newCount = alreadyCounted ? localCount : localCount + 1;
-        if (!alreadyCounted) {
-          localStorage.setItem('local_visitor_count', String(newCount));
-          sessionStorage.setItem(STORAGE_KEY, 'true');
-        }
-        setCount(newCount);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCount();
+      })
+      .catch(() => {}) // Silently fail - counter will stay hidden
+      .finally(() => setLoading(false));
   }, []);
 
   if (loading) {
