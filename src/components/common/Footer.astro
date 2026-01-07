@@ -1,6 +1,7 @@
 ---
 import { useTranslations, getLocalizedPath, type Language } from '../../i18n';
 import { contactInfo } from '../../data/contact';
+import VisitorCounter from './VisitorCounter';
 
 interface Props {
   lang: Language;
@@ -189,9 +190,12 @@ const currentYear = new Date().getFullYear();
       <p class="text-white/60 text-sm text-center md:text-left">
         &copy; {currentYear} Parivartan - Niranjan Kulkarni. {t('footer.copyright')}
       </p>
-      <p class="text-white/40 text-xs">
-        Designed with <span class="text-gold-500">&#10084;</span> in India
-      </p>
+      <div class="flex items-center gap-4">
+        <VisitorCounter client:load label={t('footer.visitors')} />
+        <p class="text-white/40 text-xs">
+          Designed with <span class="text-gold-500">&#10084;</span> in India
+        </p>
+      </div>
     </div>
   </div>
 </footer>
