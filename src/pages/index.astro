@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/home/HeroSection.astro';
 import AboutPreview from '../components/home/AboutPreview.astro';
 import ServicesPreview from '../components/home/ServicesPreview.astro';
+import VideoShowcase from '../components/home/VideoShowcase.astro';
 import StatsCounter from '../components/home/StatsCounter.astro';
 import TestimonialsTicker from '../components/home/TestimonialsTicker.astro';
 import GalleryPreview from '../components/home/GalleryPreview.astro';
@@ -28,6 +29,9 @@ const t = useTranslations(lang);
 
   <!-- Services Preview -->
   <ServicesPreview lang={lang} />
+
+  <!-- Video Showcase -->
+  <VideoShowcase lang={lang} />
 
   <!-- Stats Counter -->
   <StatsCounter lang={lang} />
