@@ -142,6 +142,13 @@ export const galleryImages: GalleryImage[] = [
     src: '/images/gallery/awards/My Photo 2008-02-19 (1) 0004.jpg',
     alt: 'Award recognition ceremony',
     category: 'awards'
+  },
+  {
+    id: 'awards-6',
+    src: '/images/gallery/awards/swararaj-chhota-gandharva-2026.jpeg',
+    alt: 'Receiving the Swararaj Chhota Gandharva Smriti Award',
+    category: 'awards',
+    objectPosition: 'center 25%'
   }
 ];
 

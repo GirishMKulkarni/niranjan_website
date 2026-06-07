@@ -41,5 +41,15 @@ export const awards: Award[] = [
     year: '2025',
     descriptionKey: 'awards.descriptions.anchor',
     image: '/images/hero/award-moment.jpg'
+  },
+  {
+    id: 'gandharva',
+    titleKey: 'awards.items.gandharva',
+    organization: 'Akhil Bharatiya Marathi Natya Parishad, Pune',
+    year: '2026',
+    descriptionKey: 'awards.descriptions.gandharva',
+    image: '/images/gallery/awards/swararaj-chhota-gandharva-2026.jpeg',
+    imagePosition: 'center 25%',
+    imageHeight: '22'
   }
 ];

@@ -205,14 +205,16 @@
       "actor1": "Best Actor - Aashiyana Karandak Ekankika",
       "actor2": "Best Actor - Suman Natya Wachan",
       "poet": "Best Poet - Tata Motors Competition",
-      "anchor": "Best Anchor - Lubrall Industries"
+      "anchor": "Best Anchor - Lubrall Industries",
+      "gandharva": "Swararaj Chhota Gandharva Smriti Award"
     },
     "descriptions": {
       "debut": "Recognized for outstanding first performance in musical theatre.",
       "actor1": "Awarded for exceptional acting in one-act play competition.",
       "actor2": "Honored for best theatrical reading performance.",
       "poet": "Recognized for poetry excellence in corporate competition.",
-      "anchor": "Awarded for professional event hosting excellence."
+      "anchor": "Awarded for professional event hosting excellence.",
+      "gandharva": "Honored with this prestigious memorial award by the Akhil Bharatiya Marathi Natya Parishad, Pune, recognizing distinguished contribution to Marathi musical theatre (Sangeet Natya)."
     },
     "rangbhumi_title": "Marathi Rangbhumi Recognition",
     "rangbhumi_desc": "Honored by the prestigious Marathi theatre community for contributions to the art form.",
